@@ -3,7 +3,7 @@ name: Koyeb Daily Redeploy
 on:
   workflow_dispatch:
   schedule:
-    - cron: '17 3 * * *'   # ogni giorno alle 03:17 UTC
+    - cron: '17 3 * * *'
 
 jobs:
   redeploy:
@@ -16,4 +16,4 @@ jobs:
           api_token: ${{ secrets.KOYEB_API_TOKEN }}
 
       - name: Redeploy del servizio
-        run: koyeb services redeploy NOME_SERVIZIO --app NOME_APP --wait --use-cache
+        run: koyeb services redeploy jobeinabox --app protestant-elane --wait --use-cache
