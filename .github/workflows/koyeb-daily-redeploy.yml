@@ -1,0 +1,19 @@
+name: Koyeb Daily Redeploy
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 3 * * *'
+
+jobs:
+  redeploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Installa e configura Koyeb CLI
+        uses: koyeb-community/koyeb-actions@v2
+        with:
+          api_token: ${{ secrets.KOYEB_API_TOKEN }}
+
+      - name: Redeploy del servizio
+        run: koyeb services redeploy jobeinabox --app protestant-elane --wait --use-cache
